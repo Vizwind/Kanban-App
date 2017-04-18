@@ -38,6 +38,9 @@
     "alt-utils": "^1.0.0",
     "node-uuid": "^1.4.8",
     "react": "^15.5.4",
+    "react-addons-update": "^15.5.2",
+    "react-dnd": "^2.3.0",
+    "react-dnd-html5-backend": "^2.3.0",
     "react-dom": "^15.5.4"
   }
 }
