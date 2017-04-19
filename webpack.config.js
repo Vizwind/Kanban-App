@@ -11,7 +11,8 @@ const TARGET = process.env.npm_lifecycle_event;
 const PATHS = {
   app: path.join(__dirname, 'app'),
   build: path.join(__dirname, 'build'),
-  style: path.join(__dirname, 'app/main.css')
+  style: path.join(__dirname, 'app/main.css'),
+  test: path.join(__dirname, 'tests')
 };
 
 process.env.BABEL_ENV = TARGET;
@@ -56,6 +57,9 @@ const common = {
 
 if (TARGET === 'start' || !TARGET) {
   module.exports = merge(common, {
+    entry: {
+      style: PATHS.style
+    },
     devtool: 'eval-source-map',
     devServer: {
       historyApiFallback: true,
@@ -88,7 +92,8 @@ if (TARGET === 'build' || TARGET === 'stats') {
     entry: {
       vendor: Object.keys(pkg.dependencies).filter(function (v) {
         return v !== 'alt-utils';
-      })
+      }),
+      style: PATHS.style
     },
     output: {
       path: PATHS.build,
@@ -119,5 +124,32 @@ if (TARGET === 'build' || TARGET === 'stats') {
         }
       })
     ]
+  });
+}
+
+if(TARGET === 'test' || TARGET === 'tdd') {
+  module.exports = merge(common, {
+    devtool: 'inline-source-map',
+    resolve: {
+      alias: {
+        'app': PATHS.app
+      }
+    },
+    module: {
+      rules: [
+        // {
+        //   test: /\.jsx?$/,
+        //   enforce: 'pre',
+        //   loaders: ['isparta-instrumenter-loader'],
+        //   include: PATHS.app
+        // },
+        {
+          test: /\.jsx?$/,
+          enforce: 'pre',
+          loaders: ['babel-loader?cacheDirectory'],
+          include: PATHS.test
+        }
+      ]
+    }
   });
 }
