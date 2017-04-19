@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for app/components/Editable.jsx</title>
+    <title>Code coverage report for app/stores/NoteStore.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -16,28 +16,28 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../index.html">all files</a> / <a href="index.html">app/components/</a> Editable.jsx
+      <a href="../../index.html">all files</a> / <a href="index.html">app/stores/</a> NoteStore.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">83.33% </span>
+        <span class="strong">94.74% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>10/12</span>
+        <span class='fraction'>18/19</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">60% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>6/10</span>
+        <span class='fraction'>2/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">85.71% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>6/7</span>
+        <span class='fraction'>11/11</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">83.33% </span>
+        <span class="strong">94.12% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>10/12</span>
+        <span class='fraction'>16/17</span>
       </div>
     </div>
   </div>
@@ -91,23 +91,13 @@
 46
 47
 48
-49
-50
-51
-52
-53</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-yes">3×</span>
+49</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -116,27 +106,28 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -147,59 +138,56 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import uuid from 'node-uuid';
+import alt from '../libs/alt';
+import NoteActions from '../actions/NoteActions';
 &nbsp;
-export default class Editable extends React.Component {
-  render() {
-    const {value, onEdit, onValueClick, editing, ...props} = this.props;
-    return (
-      &lt;div {...props}&gt;
-        {editing ? this.renderEdit() : this.renderValue()}
-      &lt;/div&gt;
-    );
+class NoteStore {
+  constructor() {
+    this.bindActions(NoteActions);
+    this.notes = [];
+&nbsp;
+    this.exportPublicMethods({
+      getNotesByIds: this.getNotesByIds.bind(this)
+    });
   }
 &nbsp;
-  renderEdit = () =&gt; {
-    return &lt;input type="text"
-                  ref={
-                    (e) =&gt; e ? e.selectionStart = this.props.value.length : <span class="branch-1 cbranch-no" title="branch not covered" >null</span>
-                  }
-                  autoFocus={true}
-                  defaultValue={this.props.value}
-                  onBlur={this.finishEdit}
-                  onKeyPress={this.checkEnter} /&gt;;
-  };
+  create(note) {
+    const notes = this.notes;
+    note.id = uuid.v4();
+    this.setState({
+      notes: notes.concat(note)
+    });
 &nbsp;
-  renderValue = () =&gt; {
-    const onDelete = this.props.onDelete;
-    return (
-      &lt;div onClick={this.props.onValueClick}&gt;
-        &lt;span className="value"&gt;{this.props.value}&lt;/span&gt;
-        {onDelete ? this.renderDelete() : null }
-      &lt;/div&gt;
-    );
-  };
+    return note;
+  }
 &nbsp;
-  renderDelete = () =&gt; {
-    return &lt;button
-      className="delete"
-      onClick={this.props.onDelete}&gt;x&lt;/button&gt;;
-  };
+  update(updatedNote) {
+    const notes = this.notes.map(note =&gt; {
+      <span class="missing-if-branch" title="else path not taken" >E</span>if(note.id === updatedNote.id) {
+        return Object.assign({}, note, updatedNote);
+      }
+<span class="cstat-no" title="statement not covered" >      return note;</span>
+    });
+    this.setState({notes});
+  }
 &nbsp;
-  checkEnter = (e) =&gt; <span class="fstat-no" title="function not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >    if (e.key === 'Enter') {</span>
-<span class="cstat-no" title="statement not covered" >      this.finishEdit(e);</span>
-    }
-  };
+  delete(id) {
+    this.setState({
+      notes: this.notes.filter(note =&gt; note.id !== id)
+    });
+  }
 &nbsp;
-  finishEdit = (e) =&gt; {
-    const value = e.target.value;
-    <span class="missing-if-branch" title="else path not taken" >E</span>if (this.props.onEdit) {
-      this.props.onEdit(value);
-    }
-  };
+  getNotesByIds(ids) {
+    return (ids || <span class="branch-1 cbranch-no" title="branch not covered" >[])</span>.map(
+      id =&gt; this.notes.filter(note =&gt; note.id === id)
+    ).filter(a =&gt; a.length).map(a =&gt; a[0]);
+  }
+&nbsp;
 }
-&nbsp;</pre></td></tr>
+&nbsp;
+export default alt.createStore(NoteStore, 'NoteStore');</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for tests/editable_test.js</title>
+    <title>Code coverage report for tests/note_store_test.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -16,13 +16,13 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../index.html">all files</a> / <a href="index.html">tests/</a> editable_test.js
+      <a href="../index.html">all files</a> / <a href="index.html">tests/</a> note_store_test.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>25/25</span>
+        <span class='fraction'>31/31</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>25/25</span>
+        <span class='fraction'>31/31</span>
       </div>
     </div>
   </div>
@@ -95,29 +95,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -128,60 +113,75 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
-import {
-  renderIntoDocument,
-  findRenderedDOMComponentWithClass,
-  findRenderedDOMComponentWithTag,
-  Simulate
-} from 'react-addons-test-utils';
-import assert from 'assert';
-import Editable from '../app/components/Editable.jsx';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import assert from 'assert';
+import NoteActions from 'app/actions/NoteActions';
+import NoteStore from 'app/stores/NoteStore';
+import alt from 'app/libs/alt';
 &nbsp;
-describe('Editable', () =&gt; {
-  it('renders value', () =&gt; {
-    const value = 'value';
-    const component = renderIntoDocument( &lt;Editable value={value} /&gt; );
-    const valueComponent = findRenderedDOMComponentWithClass(component, 'value');
-    assert.equal(valueComponent.textContent, value);
+describe('NoteStore', () =&gt; {
+&nbsp;
+  beforeEach(() =&gt; {
+    alt.flush();
   });
 &nbsp;
-  it('triggers onEdit', () =&gt; {
-    let triggered = false;
-    const newValue = 'value';
-    const onEdit = (val) =&gt; {
-      triggered = true;
-      assert.equal(val, newValue);
-    };
-    const component = renderIntoDocument(
-      &lt;Editable editing={true} value={'value'} onEdit={onEdit} /&gt;
-    );
-    const input = findRenderedDOMComponentWithTag(component, 'input');
-    input.value = newValue;
-    Simulate.blur(input);
-    assert.equal(triggered, true);
+  it('creates notes', () =&gt; {
+    const task = 'test';
+    NoteActions.create({task});
+    const state = NoteStore.getState();
+    assert.equal(state.notes.length, 1);
+    assert.equal(state.notes[0].task, task);
   });
 &nbsp;
-  it('allows deletion', () =&gt; {
-    let deleted = false;
-    const onDelete = () =&gt; {
-      deleted = true;
-    };
-    const component = renderIntoDocument(
-      &lt;Editable value={'value'} onDelete={onDelete} /&gt;
-    );
-    let deleteComponent = findRenderedDOMComponentWithClass(component, 'delete');
-    Simulate.click(deleteComponent);
-    assert.equal(deleted, true);
+  it('updates notes', () =&gt; {
+    const task = 'test';
+    const updatedTask = 'test 2';
+    NoteActions.create({task});
+    const note = NoteStore.getState().notes[0];
+    NoteActions.update({...note, task: updatedTask});
+    const state = NoteStore.getState();
+    assert.equal(state.notes.length, 1);
+    assert.equal(state.notes[0].task, updatedTask);
+  });
+&nbsp;
+  it('deletes notes', () =&gt; {
+    NoteActions.create({task: 'test'});
+    const note = NoteStore.getState().notes[0];
+    NoteActions.delete(note.id);
+    const state = NoteStore.getState();
+    assert.equal(state.notes.length, 0);
+  });
+&nbsp;
+  it('gets notes', () =&gt; {
+    const task = 'test';
+    NoteActions.create({task: task});
+    const note = NoteStore.getState().notes[0];
+    const notes = NoteStore.getNotesByIds([note.id]);
+    assert.equal(notes.length, 1);
+    assert.equal(notes[0].task, task);
   });
 &nbsp;
 });</pre></td></tr>

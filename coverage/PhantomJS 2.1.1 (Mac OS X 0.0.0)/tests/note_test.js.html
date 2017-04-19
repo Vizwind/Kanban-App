@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for tests/editable_test.js</title>
+    <title>Code coverage report for tests/note_test.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -16,13 +16,13 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../index.html">all files</a> / <a href="index.html">tests/</a> editable_test.js
+      <a href="../index.html">all files</a> / <a href="index.html">tests/</a> note_test.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>25/25</span>
+        <span class='fraction'>8/8</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -32,12 +32,12 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>6/6</span>
+        <span class='fraction'>4/4</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>25/25</span>
+        <span class='fraction'>8/8</span>
       </div>
     </div>
   </div>
@@ -72,26 +72,7 @@
 27
 28
 29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+30</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -105,86 +86,51 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
 import {
-  renderIntoDocument,
-  findRenderedDOMComponentWithClass,
-  findRenderedDOMComponentWithTag,
-  Simulate
+  renderIntoDocument
 } from 'react-addons-test-utils';
+import TestBackend from 'react-dnd-test-backend';
+import {DragDropContext} from 'react-dnd';
 import assert from 'assert';
-import Editable from '../app/components/Editable.jsx';
+import Note from 'app/components/Note.jsx';
 &nbsp;
-describe('Editable', () =&gt; {
-  it('renders value', () =&gt; {
-    const value = 'value';
-    const component = renderIntoDocument( &lt;Editable value={value} /&gt; );
-    const valueComponent = findRenderedDOMComponentWithClass(component, 'value');
-    assert.equal(valueComponent.textContent, value);
-  });
-&nbsp;
-  it('triggers onEdit', () =&gt; {
-    let triggered = false;
-    const newValue = 'value';
-    const onEdit = (val) =&gt; {
-      triggered = true;
-      assert.equal(val, newValue);
-    };
+describe('Note', () =&gt; {
+  it('renders children', () =&gt; {
+    const test = 'test';
+    const NoteContent = wrapInTestContext(Note);
     const component = renderIntoDocument(
-      &lt;Editable editing={true} value={'value'} onEdit={onEdit} /&gt;
+      &lt;NoteContent id="demo"&gt;{test}&lt;/NoteContent&gt;
     );
-    const input = findRenderedDOMComponentWithTag(component, 'input');
-    input.value = newValue;
-    Simulate.blur(input);
-    assert.equal(triggered, true);
+    assert.equal(component.props.children, test);
   });
+});
 &nbsp;
-  it('allows deletion', () =&gt; {
-    let deleted = false;
-    const onDelete = () =&gt; {
-      deleted = true;
-    };
-    const component = renderIntoDocument(
-      &lt;Editable value={'value'} onDelete={onDelete} /&gt;
-    );
-    let deleteComponent = findRenderedDOMComponentWithClass(component, 'delete');
-    Simulate.click(deleteComponent);
-    assert.equal(deleted, true);
-  });
-&nbsp;
-});</pre></td></tr>
+// https://gaearon.github.io/react-dnd/docs-testing.html
+function wrapInTestContext(DecoratedComponent) {
+  @DragDropContext(TestBackend)
+  class TestContextContainer extends React.Component {
+    render() {
+      return &lt;DecoratedComponent {...this.props} /&gt;;
+    }
+  }
+  return TestContextContainer;
+}</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
