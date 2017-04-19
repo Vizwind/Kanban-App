@@ -7,6 +7,7 @@ import LaneActions from '../actions/LaneActions';
 import Editable from './Editable.jsx';
 import {DropTarget} from 'react-dnd';
 import ItemTypes from '../constants/itemTypes';
+import log from '../decorators/log';
 
 const noteTarget = {
   hover(targetProps, monitor) {
@@ -54,6 +55,7 @@ export default class Lane extends React.Component {
     );
   }
 
+  @log
   editNote(id, task) {
     if (!task.trim()) {
       NoteActions.update({id, editing: false});
