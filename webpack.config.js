@@ -12,7 +12,8 @@ const PATHS = {
   app: path.join(__dirname, 'app'),
   build: path.join(__dirname, 'build'),
   style: path.join(__dirname, 'app/main.css'),
-  test: path.join(__dirname, 'tests')
+  test: path.join(__dirname, 'tests'),
+  components: path.join(__dirname, 'app/components'),
 };
 
 process.env.BABEL_ENV = TARGET;
@@ -137,15 +138,13 @@ if(TARGET === 'test' || TARGET === 'tdd') {
     },
     module: {
       rules: [
-        // {
-        //   test: /\.jsx?$/,
-        //   enforce: 'pre',
-        //   loaders: ['isparta-instrumenter-loader'],
-        //   include: PATHS.app
-        // },
+        {
+          test: /\.css$/,
+          use: ['style-loader', 'css-loader'],
+          include: PATHS.app
+        },
         {
           test: /\.jsx?$/,
-          enforce: 'pre',
           loaders: ['babel-loader?cacheDirectory'],
           include: PATHS.test
         }

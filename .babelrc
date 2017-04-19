@@ -9,6 +9,9 @@
       "presets": [
         "react-hmre"
       ]
+    },
+    "test": {
+      "plugins": [ "istanbul" ]
     }
   }
 }
